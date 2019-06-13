@@ -271,7 +271,7 @@ class ActorCritic(Mechanism):
 
         # v
         delta = usum + discount * wsum - c[self.response] - wsum_prev
-        x, feasible_behaviors = self._support_vector(stimulus)
+        x, feasible_behaviors = self._support_vector(self.prev_stimulus)
         p = x[ feasible_behaviors == self.response ] / sum(x);
         for element in self.prev_stimulus:
             alpha_v_er = alpha_v[(element, self.response)]
